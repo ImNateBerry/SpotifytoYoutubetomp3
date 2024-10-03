@@ -4,7 +4,7 @@ import base64
 from requests import post, get
 import json
 from googleapiclient.discovery import build
-import youtube_dl 
+import yt_dlp as youtube_dl
 
 load_dotenv()
 
@@ -102,8 +102,8 @@ def download_audio(yt_url):
         ydl.download([yt_url])
 
 token = get_token()
-playlist = search_for_playlist(token, "Today's Top Hits")
-playlist_id = '0iPQ4lGrvXDAoipBLBYDc5' #playlist['id']
+# playlist = search_for_playlist(token, "Today's Top Hits")
+playlist_id = input("Enter your playlist id: ") #playlist['id']
 songs = get_tracks(token, playlist_id) #creates an unfiltered list of track data
 artists = get_artists(token, playlist_id) #creates an unfiltered list of artist data
 
